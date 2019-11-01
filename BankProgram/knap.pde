@@ -1,15 +1,25 @@
 class Knap {
   //Teksten til knappen hardcodes til hvad der skal stå på indsæt/træk knappen
-  String tekst    = " Tryk for indsæt beløb på KONTO1";
+  String tekst;
 
   //Position hardcodes.
-  float xPosition = 10, yPosition  = 5;
+  float xPosition, yPosition;
 
   //Størrelsen hardcodes
   float hojdeKnap = 25, breddeKnap = 250;
 
   //Variable til om knappen er klikket
-  boolean klikket;
+  boolean klikket = false;
+  
+  //Det felt som er knyttet til knappen
+  TekstFelt felt;
+
+  Knap(String tekst, float x, float y, String kontonavn){
+    this.tekst = tekst+kontonavn;
+    xPosition = x;
+    yPosition = y;
+    felt = new TekstFelt(new Konto(kontonavn, xPosition, yPosition+200), xPosition, yPosition+hojdeKnap, breddeKnap, hojdeKnap+10);
+  }
   
   void tegn() {
     //Baggrunden skal være rød, hvis knappen ikke er blevet klikket
@@ -26,13 +36,18 @@ class Knap {
 
     //Knappens tekst tegnes (hvid)
     fill(255);
-    text(tekst, xPosition, yPosition+15);
+    text(tekst, xPosition+5, yPosition+15);
+    
+    //Tegn tekstfeltet og kontoen
+    felt.tegn();
+    felt.konto.udskrivKonto();
   }
 
   void registrerKlik() {
     //Hvis musen er klikket og at den er indenfor knappens område
     if (mousePressed && mouseX < xPosition +breddeKnap && mouseX > xPosition && mouseY > yPosition && mouseY < yPosition + hojdeKnap) {
       klikket = true;
+      
     } else {
       //Hvis den ikke er klikket eller klikket ikke var over knappen så skal den sættes til falsk.
       klikket = false;

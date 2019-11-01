@@ -14,6 +14,7 @@ class Konto {
     konto = startvaerdi;
     this.x = x;
     this.y = y;
+
   }
 
   void indsaet(float beloeb) {
