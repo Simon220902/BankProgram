@@ -27,9 +27,15 @@ void draw() {
   clear();
   for (Komponent k : komponenter) {
     k.tegn();
-    k.registrerKlik();
   }
 
+  if (indsaetBegge.erKlikket()) {
+    if (indsaetBegge.checket) {
+      indsaetBegge.checket = false;
+    } else {
+      indsaetBegge.checket = true;
+    }
+  }
 
   if (kontoknap1.erKlikket()) {
     if (indsaetBegge.erChecket()) {
@@ -56,6 +62,12 @@ void draw() {
 
   kontoFelt1.tegn();
   kontoFelt2.tegn();
+}
+
+void mousePressed() {
+  for (Komponent k : komponenter) {
+    k.registrerKlik();
+  }
 }
 
 void keyPressed() {

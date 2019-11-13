@@ -9,23 +9,18 @@ class CheckBox extends Komponent {
     this.checkInfo = checkInfo;
   }
   @Override
-    //Vi udvider registrerklik metoden fra superklassen.
     void registrerKlik() {
-    //Vi kalder superklassens registrerklik for at finde ud af om der er blevet klikket
-    if (mousePressed && mouseX < x + w && mouseX > x && mouseY > y && mouseY < y + h) {
-      klikket = true;
-      if (checket) {
-        checket = false;
-      } else {
-        checket = true;
-      }
-    } else {
-      klikket = false;
+    if (!checket && mouseX < x + w && mouseX > x && mouseY > y && mouseY < y + h ) {
+      checket = true;
+    } else if (checket && mouseX < x + w && mouseX > x && mouseY > y && mouseY < y + h ) {
+      checket = false;
     }
   }
 
   @Override
     void tegn() {
+    fill(255);
+    text(checkInfo, x+w+5, y+h/3*2);
     if (checket) {
       //Hvis den er valgt skal boksen være grå
       fill(150);
@@ -38,10 +33,8 @@ class CheckBox extends Komponent {
       noStroke();
     } else {
       //ellers skal det bare være en hvid boks
-      fill(255);
       rect(x, y, w, h, 10);
     }
-    text(checkInfo, x+w+5, y+h/3*2);
   }
 
   boolean erChecket() {

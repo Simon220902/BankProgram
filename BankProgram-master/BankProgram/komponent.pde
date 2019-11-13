@@ -6,7 +6,7 @@ class Komponent {
   }
 
   void registrerKlik() {
-    if (mousePressed && mouseX < x + w && mouseX > x && mouseY > y && mouseY < y + h) {
+    if (mouseX < x + w && mouseX > x && mouseY > y && mouseY < y + h) {
       klikket = true;
     } else {
       klikket = false;
