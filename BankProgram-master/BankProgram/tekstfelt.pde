@@ -22,14 +22,14 @@ class TekstFelt extends Komponent {
     text("TAST BELØB: " +input.toString() + "   KR", x, y + 25);
   }
   @Override
-  void registrerKlik() {
+    void registrerKlik() {
     if (mousePressed && mouseX < x + w && mouseX > x && mouseY > y && mouseY < y + h) {
       iFokus = true;
     } else if (mousePressed && !(mouseX < x + w && mouseX > x && mouseY > y && mouseY < y + h)) {
       iFokus = false;
     }
   }
-  
+
   void tilfojTegn() {
     if (key==BACKSPACE && input.length() > 0) {
       input.deleteCharAt(input.length()-1);

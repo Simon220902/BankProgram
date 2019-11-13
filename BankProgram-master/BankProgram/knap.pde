@@ -1,6 +1,6 @@
-class Knap 
-  extends Komponent {
+class Knap extends Komponent {
   String tekst;
+
   Knap(float x, float y) {
     super.x = x;
     super.y = y;

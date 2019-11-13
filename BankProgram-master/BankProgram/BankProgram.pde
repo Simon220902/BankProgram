@@ -1,14 +1,12 @@
-
-//Udfordring 6. Prøv at udtænk en måde at visualisere konto bevægelser
-//Udfordring 7. Prøv at udtænke en måde at give din konto en rente
-
 Knap       kontoknap1 = new Knap(30, 100);
 Knap       kontoknap2 = new Knap(330, 100);
 
 TekstFelt  tekstFelt = new TekstFelt(30, 40);
 
-KontoFelt  kontoFelt1     = new KontoFelt(30, 150);
-KontoFelt  kontoFelt2     = new KontoFelt(330, 150);
+KontoFelt  kontoFelt1 = new KontoFelt(30, 150);
+KontoFelt  kontoFelt2 = new KontoFelt(330, 150);
+
+CheckBox indsaetBegge = new CheckBox(330, 40, "Indsæt på begge konti");
 
 ArrayList<Komponent> komponenter = new ArrayList<Komponent>();
 
@@ -22,6 +20,7 @@ void setup() {
   komponenter.add(tekstFelt);
   komponenter.add(kontoFelt1);
   komponenter.add(kontoFelt2);
+  komponenter.add(indsaetBegge);
 }
 
 void draw() {
@@ -33,13 +32,25 @@ void draw() {
 
 
   if (kontoknap1.erKlikket()) {
-    kontoFelt1.formue = kontoFelt1.formue + tekstFelt.hentBelob();
-    tekstFelt.ryd();
+    if (indsaetBegge.erChecket()) {
+      kontoFelt1.formue = kontoFelt1.formue + tekstFelt.hentBelob();
+      kontoFelt2.formue = kontoFelt2.formue + tekstFelt.hentBelob();
+      tekstFelt.ryd();
+    } else {
+      kontoFelt1.formue = kontoFelt1.formue + tekstFelt.hentBelob();
+      tekstFelt.ryd();
+    }
   }  
 
   if (kontoknap2.erKlikket()) {
-    kontoFelt2.formue = kontoFelt2.formue + tekstFelt.hentBelob();
-    tekstFelt.ryd();
+    if (indsaetBegge.erChecket()) {
+      kontoFelt1.formue = kontoFelt1.formue + tekstFelt.hentBelob();
+      kontoFelt2.formue = kontoFelt2.formue + tekstFelt.hentBelob();
+      tekstFelt.ryd();
+    } else {
+      kontoFelt2.formue = kontoFelt2.formue + tekstFelt.hentBelob();
+      tekstFelt.ryd();
+    }
   }  
 
 

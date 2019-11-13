@@ -1,7 +1,6 @@
 class KontoFelt extends Komponent {
   float formue = 0;
-
-
+  
   KontoFelt(float x, float y) {
     super.x = x;
     super.y = y;
