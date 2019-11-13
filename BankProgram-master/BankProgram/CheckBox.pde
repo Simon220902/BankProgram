@@ -27,6 +27,7 @@ class CheckBox extends Komponent {
       rect(x, y, w, h, 10);
       //med et hvidt checkmark
       stroke(255);
+      strokeWeight(3);
       //Checkmarket, det består af to linjer
       line(x+3, y+h/2+3, x+w/2, y+h-3);
       line(x+w/2, y+h-3, x+w-3, y+5);
