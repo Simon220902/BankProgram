@@ -1,12 +1,12 @@
 class CheckBox extends Komponent {  
   boolean checket = false;
-  String checkInfo;
-  CheckBox(float x, float y, String checkInfo) {
+  String tekst;
+  CheckBox(float x, float y, String tekst) {
     super.x = x;
     super.y = y;
     super.h = 25;
     super.w = 25;
-    this.checkInfo = checkInfo;
+    this.tekst = tekst;
   }
   @Override
     void registrerKlik() {
@@ -20,11 +20,11 @@ class CheckBox extends Komponent {
   @Override
     void tegn() {
     fill(255);
-    text(checkInfo, x+w+5, y+h/3*2);
+    text(tekst, x+w+5, y+h/3*2);
     if (checket) {
       //Hvis den er valgt skal boksen være grå
       fill(150);
-      rect(x, y, w, h, 10);
+      rect(x, y, w, h, 5);
       //med et hvidt checkmark
       stroke(255);
       strokeWeight(3);
@@ -34,7 +34,7 @@ class CheckBox extends Komponent {
       noStroke();
     } else {
       //ellers skal det bare være en hvid boks
-      rect(x, y, w, h, 10);
+      rect(x, y, w, h, 5);
     }
   }
 
