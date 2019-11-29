@@ -9,10 +9,12 @@ class Knap extends Komponent {
   }
 
   @Override
-  void tegn() {
+    void tegn() {
     fill(100, 0, 0);
-    if (super.klikket) {
+    if (super.klikket && super.musOver) {
       fill(100, 100, 0);
+    } else if(super.musOver){
+      fill(60, 60, 0);
     }
     rect(x, y, w, h, 10);
     fill(255);
@@ -44,5 +46,9 @@ class IndsaetKnap extends Knap {
       primaer.formue = primaer.formue + tekstFelt.hentBelob();
       tekstFelt.ryd();
     }
+  }
+  @Override
+    void doNotClickedAction() {
+    super.klikket = false;
   }
 }

@@ -33,6 +33,7 @@ void draw() {
   clear();
   for (Komponent k : komponenter) {
     k.tegn();
+    k.doMouseOver();
   }
 
   kontoFelt1.tegn();

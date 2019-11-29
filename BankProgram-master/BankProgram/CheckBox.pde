@@ -24,7 +24,10 @@ class CheckBox extends Komponent {
       line(x+3, y+h/2+3, x+w/2, y+h-3);
       line(x+w/2, y+h-3, x+w-3, y+5);
       noStroke();
-    } else {
+    } else if(super.musOver){
+      fill(175);
+      rect(x, y, w, h, 5);
+    } else{
       //ellers skal det bare være en hvid boks
       rect(x, y, w, h, 5);
     }
