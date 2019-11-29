@@ -1,5 +1,7 @@
-Knap       kontoknap1 = new Knap(30, 100);
-Knap       kontoknap2 = new Knap(330, 100);
+//tilføjet for: checkbox, knap, 
+//mangler: stadig at håndetere det i koden nedenunder
+//mangler: tekstfelt
+
 
 TekstFelt  tekstFelt = new TekstFelt(30, 40);
 
@@ -7,6 +9,10 @@ KontoFelt  kontoFelt1 = new KontoFelt(30, 150);
 KontoFelt  kontoFelt2 = new KontoFelt(330, 150);
 
 CheckBox indsaetBegge = new CheckBox(330, 40, "Indsæt på begge konti");
+
+Knap       kontoknap1 = new IndsaetKnap(30, 100, kontoFelt1, kontoFelt2, tekstFelt);
+Knap       kontoknap2 = new IndsaetKnap(330, 100, kontoFelt2, kontoFelt1, tekstFelt);
+
 
 ArrayList<Komponent> komponenter = new ArrayList<Komponent>();
 
@@ -28,37 +34,6 @@ void draw() {
   for (Komponent k : komponenter) {
     k.tegn();
   }
-
-  if (indsaetBegge.erKlikket()) {
-    if (indsaetBegge.checket) {
-      indsaetBegge.checket = false;
-    } else {
-      indsaetBegge.checket = true;
-    }
-  }
-
-  if (kontoknap1.erKlikket()) {
-    if (indsaetBegge.erChecket()) {
-      kontoFelt1.formue = kontoFelt1.formue + tekstFelt.hentBelob();
-      kontoFelt2.formue = kontoFelt2.formue + tekstFelt.hentBelob();
-      tekstFelt.ryd();
-    } else {
-      kontoFelt1.formue = kontoFelt1.formue + tekstFelt.hentBelob();
-      tekstFelt.ryd();
-    }
-  }  
-
-  if (kontoknap2.erKlikket()) {
-    if (indsaetBegge.erChecket()) {
-      kontoFelt1.formue = kontoFelt1.formue + tekstFelt.hentBelob();
-      kontoFelt2.formue = kontoFelt2.formue + tekstFelt.hentBelob();
-      tekstFelt.ryd();
-    } else {
-      kontoFelt2.formue = kontoFelt2.formue + tekstFelt.hentBelob();
-      tekstFelt.ryd();
-    }
-  }  
-
 
   kontoFelt1.tegn();
   kontoFelt2.tegn();

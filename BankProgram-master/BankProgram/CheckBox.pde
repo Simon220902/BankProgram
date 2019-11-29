@@ -8,15 +8,7 @@ class CheckBox extends Komponent {
     super.w = 25;
     this.tekst = tekst;
   }
-  @Override
-    void registrerKlik() {
-    if (!checket && mouseX < x + w && mouseX > x && mouseY > y && mouseY < y + h ) {
-      checket = true;
-    } else if (checket && mouseX < x + w && mouseX > x && mouseY > y && mouseY < y + h ) {
-      checket = false;
-    }
-  }
-
+ 
   @Override
     void tegn() {
     fill(255);
@@ -37,7 +29,12 @@ class CheckBox extends Komponent {
       rect(x, y, w, h, 5);
     }
   }
-
+  
+  @Override
+  void doClickedAction(){
+    this.checket = !this.checket;
+  }
+  
   boolean erChecket() {
     return checket;
   }

@@ -1,7 +1,5 @@
 class TekstFelt extends Komponent {
-
   boolean iFokus  = false;
-
   StringBuffer input = new StringBuffer();
 
   TekstFelt(float x, float y) {
@@ -22,14 +20,14 @@ class TekstFelt extends Komponent {
     text("TAST BELØB: " +input.toString() + "   KR", x, y + 25);
   }
   @Override
-    void registrerKlik() {
-    if (mouseX < x + w && mouseX > x && mouseY > y && mouseY < y + h) {
-      iFokus = true;
-    } else if (!(mouseX < x + w && mouseX > x && mouseY > y && mouseY < y + h)) {
-      iFokus = false;
-    }
+  void doClickedAction(){
+    iFokus = true;
   }
-
+  @Override
+  void doNotClickedAction(){
+    iFokus = false;
+  }
+  //Kunne laves til en aktion senere
   void tilfojTegn() {
     if (key==BACKSPACE && input.length() > 0) {
       input.deleteCharAt(input.length()-1);
