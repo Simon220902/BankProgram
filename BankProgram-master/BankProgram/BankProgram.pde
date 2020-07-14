@@ -1,7 +1,9 @@
+//import processing.sound.*;
+
 //tilføjet for: checkbox, knap, 
 //mangler: stadig at håndetere det i koden nedenunder
 //mangler: tekstfelt
-
+//SoundFile klik;
 
 TekstFelt  tekstFelt = new TekstFelt(30, 40);
 
@@ -19,6 +21,7 @@ ArrayList<Komponent> komponenter = new ArrayList<Komponent>();
 void setup() {
   size(1000, 500);
   frameRate(60);
+  //klik = new SoundFile(this, "klik.mp3");
   kontoknap1.tekst = "Tryk for indsæt beløb på KONTO1";
   kontoknap2.tekst = "Tryk for indsæt beløb på KONTO2";
   komponenter.add(kontoknap1);
@@ -32,8 +35,8 @@ void setup() {
 void draw() {
   clear();
   for (Komponent k : komponenter) {
-    k.tegn();
     k.doMouseOver();
+    k.tegn();
   }
 
   kontoFelt1.tegn();
@@ -41,9 +44,11 @@ void draw() {
 }
 
 void mousePressed() {
+  //klik.play();
   for (Komponent k : komponenter) {
     k.registrerKlik();
   }
+  
 }
 
 void keyPressed() {
